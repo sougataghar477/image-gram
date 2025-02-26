@@ -1,6 +1,8 @@
+import { ContextProvider } from "@/components/ContextWrapper";
+import SessionWrapper from "@/components/SessionWrapper";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import Sidebar from "@/components/Sidebar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -20,9 +22,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} flex-wrap antialiased container flex gap-[100px] justify-center`}
       >
+        <SessionWrapper>
+        <ContextProvider>
+        <Sidebar/>
         {children}
+        </ContextProvider>
+        </SessionWrapper>
       </body>
     </html>
   );
