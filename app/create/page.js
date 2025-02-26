@@ -24,7 +24,7 @@ console.log(username)
     try {
         // Upload file to Supabase Storage
         const { data, error } = await supabase.storage
-            .from("plantgramstorage") // Your bucket name
+            .from("imagegram") // Your bucket name
             .upload(`uploads/${Date.now()}_${file.name}`, file);
 
         if (error) {
@@ -32,12 +32,12 @@ console.log(username)
         }
 
         // Get the public URL of the uploaded file
-        let dataPath  = supabase.storage.from("plantgramstorage").getPublicUrl(data.path);
+        let dataPath  = supabase.storage.from("imagegram").getPublicUrl(data.path);
         let image = dataPath.data.publicUrl;
         console.log("Uploaded file URL:", image);
 
         // Send POST request to your API
-        const response = await fetch(process.env.NEXT_URL+"/api/create", {
+        const response = await fetch(process.env.NEXT_PUBLIC_URL+"/api/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
