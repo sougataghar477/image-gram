@@ -18,7 +18,7 @@ export const ContextProvider = ({ children }) => {
   const setUser = useCallback(async () => {
     if (status === "authenticated" && data?.user?.email && !state) {
       try {
-        const response = await fetch("http://localhost:3000/api/fetchUser", {
+        const response = await fetch(process.env.NEXT_PUBLIC_URL+"/api/fetchUser", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: data.user.email }),

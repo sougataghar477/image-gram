@@ -14,7 +14,7 @@ export default  function Profile({params}){
     
     useEffect(()=>{
         
-    const data =  fetch('http://localhost:3000/api/user', {
+    const data =  fetch(process.env.NEXT_PUBLIC_URL+"/api/user", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

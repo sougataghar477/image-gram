@@ -16,7 +16,7 @@ export default function AddCommentForm({ author,comments, id }) {
   let submitComment = (e) => {
     e.preventDefault();
     if (replyFlag.flag) {
-      fetch("http://localhost:3000/api/addReply", {
+      fetch(process.env.NEXT_PUBLIC_URL+"/api/addReply", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -51,7 +51,7 @@ export default function AddCommentForm({ author,comments, id }) {
         .catch(error => console.error("Error:", error));
     }
     else {
-      fetch("http://localhost:3000/api/addComment", {
+      fetch(process.env.NEXT_PUBLIC_URL+"/api/addComment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

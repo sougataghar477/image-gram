@@ -8,14 +8,14 @@ export default function LikePost({author,id,likes}){
     let userContext=useContext(AppContext);
     console.log(author,'Author From LikePost')
     let handlePostLikes =async ()=>{
-        let response=await   fetch('http://localhost:3000/api/addLikestoPost', {
+        let response=await   fetch(process.env.NEXT_PUBLIC_URL+'/api/addLikestoPost', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json'
          },
          body: JSON.stringify({
              author:author,
-             self:author === userContext.state.user.username, 
+             self:author ===  userContext?.state?.user?.username, 
              username:  userContext?.state?.user?.username,
              postId: id,
              isPostLiked:postLiked?.includes(userContext?.state?.user?.username) || likes?.includes(userContext.state.user.username)})
@@ -31,6 +31,6 @@ export default function LikePost({author,id,likes}){
         <FaRegHeart fill="red" fontSize={20}/>}
         
      </span>
-      
+     {postLiked?.toString()}
      </>
 }

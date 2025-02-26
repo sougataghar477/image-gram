@@ -24,7 +24,7 @@ export default function PostFeed({ post }) {
         <div className="flex items-center">
           <img className="w-12 h-12 rounded-full object-cover" src={post.avatar} alt="User Avatar" />
           <div>
-            <Link href={`http://localhost:3000/profile/${post.username}`}>
+            <Link href={`/profile/${post.username}`}>
               <span className="font-bold">{post.author}</span>
             </Link>
           </div>
@@ -33,7 +33,7 @@ export default function PostFeed({ post }) {
       </div>
 
       {/* Post Image */}
-      <Link target="_blank" href={`http://localhost:3000/profile/${post.username}/${post.id}`}>
+      <Link target="_blank" href={`/profile/${post.username}/${post.id}`}>
         <div className="my-2 max-w-[400px]">
           <img className="object-cover" src={post.image} alt="Post" />
         </div>
@@ -41,7 +41,7 @@ export default function PostFeed({ post }) {
 
       {/* Like Button */}
       <div className="flex gap-2 my-4">
-      <LikePost id={post?.id} likes={post?.likes} />
+      <LikePost author={post.author} id={post?.id} likes={post?.likes} />
       <label className="cursor-pointer" htmlFor="commentInput"><FaRegComment fontSize={20}/></label>
       </div>
       

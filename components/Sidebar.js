@@ -7,7 +7,7 @@ export default function Sidebar(){
     const username=userContext?.state?.user?.username;
     let [notificationsLength,setNotificationsLength]=useState(0)
     useEffect(()=>{
-        fetch('http://localhost:3000/api/notifications', {
+        fetch(process.env.NEXT_PUBLIC_URL+'/api/notifications', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

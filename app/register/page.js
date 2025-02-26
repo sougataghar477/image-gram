@@ -18,7 +18,7 @@ export default function Register(){
         let dataPath  = supabase.storage.from("plantgramstorage").getPublicUrl(data.path);
         let image = dataPath.data.publicUrl;
         console.log("Uploaded file URL:", image);
-        await fetch('http://localhost:3000/api/register', {
+        await fetch(process.env.NEXT_URL+'/api/register', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

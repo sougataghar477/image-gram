@@ -19,7 +19,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
   let handleLikes=(comment,commentType,commentId,replyId,isLiked)=>{
 
     if(commentType==='Main Comment'){
-      fetch('http://localhost:3000/api/addLikes', {
+      fetch(process.env.NEXT_PUBLIC_URL+'/api/addLikes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
       .catch(error => console.error('Error:', error));
     }
     else{
-      fetch('http://localhost:3000/api/addLikes', {
+      fetch(process.env.NEXT_PUBLIC_URL+'/api/addLikes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
       />}
 
       <div>
-        <Link href={"http://localhost:3000/profile/" + comment.commenter}>
+        <Link href={"/profile/" + comment.commenter}>
           <b>{comment?.commenter}</b>
         </Link>
         <p id={'p'+comment.commentId}>{comment.comment}</p>
@@ -125,7 +125,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
                    
                   <img className="w-12 h-12 rounded-full object-cover" src={commentReplyfromProps.avatar}/>
                   <div>
-                 <Link href={'http://localhost:3000/profile/'+commentReplyfromProps.replier}><b>{commentReplyfromProps.replier}</b></Link>
+                 <Link href={'/profile/'+commentReplyfromProps.replier}><b>{commentReplyfromProps.replier}</b></Link>
                  <p id={'p'+commentReplyfromProps.replyId}>{commentReplyfromProps.reply}</p>
                   <div className="flex gap-4 text-sm">
                   <span 

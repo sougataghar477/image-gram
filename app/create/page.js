@@ -37,7 +37,7 @@ console.log(username)
         console.log("Uploaded file URL:", image);
 
         // Send POST request to your API
-        const response = await fetch("http://localhost:3000/api/create", {
+        const response = await fetch(process.env.NEXT_URL+"/api/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
