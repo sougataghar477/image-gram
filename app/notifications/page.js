@@ -13,7 +13,7 @@ let [notifications,setNotifications]=useState([]);
 useEffect(() => {
     const fetchNotifications = async () => {
         try {
-            const response = await fetch("https://image-gram-neon.vercel.app"+'/api/notifications', {
+            const response = await fetch('https://image-gram-neon.vercel.app'+'/api/notifications', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ useEffect(() => {
 
     const markNotificationsAsSeen = async () => {
         try {
-            const response = await fetch("https://image-gram-neon.vercel.app"+'/api/seenNotifications', {
+            const response = await fetch('https://image-gram-neon.vercel.app'+'/api/seenNotifications', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
