@@ -37,7 +37,7 @@ console.log(username)
         console.log("Uploaded file URL:", image);
 
         // Send POST request to your API
-        const response = await fetch(process.env.NEXT_PUBLIC_URL+"/api/create", {
+        const response = await fetch("https://image-gram-neon.vercel.app"+"/api/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

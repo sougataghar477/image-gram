@@ -7,7 +7,7 @@ export default function Sidebar(){
     const username=userContext?.state?.user?.username;
     let [notificationsLength,setNotificationsLength]=useState(0)
     useEffect(()=>{
-        fetch(process.env.NEXT_PUBLIC_URL+'/api/notifications', {
+        fetch('https://image-gram-neon.vercel.app'+'/api/notifications', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

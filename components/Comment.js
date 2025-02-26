@@ -19,7 +19,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
   let handleLikes=(comment,commentType,commentId,replyId,isLiked)=>{
 
     if(commentType==='Main Comment'){
-      fetch(process.env.NEXT_PUBLIC_URL+'/api/addLikes', {
+      fetch('https://image-gram-neon.vercel.app'+'/api/addLikes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
       .catch(error => console.error('Error:', error));
     }
     else{
-      fetch(process.env.NEXT_PUBLIC_URL+'/api/addLikes', {
+      fetch('https://image-gram-neon.vercel.app'+'/api/addLikes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

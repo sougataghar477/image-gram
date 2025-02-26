@@ -6,7 +6,7 @@ import { FaRegPaperPlane } from "react-icons/fa6";
 import Link from "next/link";
 export default async function Post({ params }) {
     let post = await params;
-    const data = await fetch(process.env.NEXT_URL+'/api/post', {
+    const data = await fetch('https://image-gram-neon.vercel.app'+'/api/post', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -8,7 +8,7 @@ export default function LikePost({author,id,likes}){
     let userContext=useContext(AppContext);
     console.log(author,'Author From LikePost')
     let handlePostLikes =async ()=>{
-        let response=await   fetch(process.env.NEXT_PUBLIC_URL+'/api/addLikestoPost', {
+        let response=await   fetch('https://image-gram-neon.vercel.app'+'/api/addLikestoPost', {
          method: 'POST',
          headers: {
              'Content-Type': 'application/json'

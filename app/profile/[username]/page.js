@@ -14,7 +14,7 @@ export default  function Profile({params}){
     
     useEffect(()=>{
         
-    const data =  fetch(process.env.NEXT_PUBLIC_URL+"/api/user", {
+    const data =  fetch("https://image-gram-neon.vercel.app"+"/api/user", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ export default  function Profile({params}){
     },[username])
     
     let handlefollowOrUnfollow = (e) => {
-        fetch("http://localhost:3000/api/followUser", {
+        fetch("https://image-gram-neon.vercel.app/api/followUser", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

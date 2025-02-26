@@ -16,7 +16,7 @@ export default function AddCommentForm({ author,comments, id }) {
   let submitComment = (e) => {
     e.preventDefault();
     if (replyFlag.flag) {
-      fetch(process.env.NEXT_PUBLIC_URL+"/api/addReply", {
+      fetch("https://image-gram-neon.vercel.app"+"/api/addReply", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -51,7 +51,7 @@ export default function AddCommentForm({ author,comments, id }) {
         .catch(error => console.error("Error:", error));
     }
     else {
-      fetch(process.env.NEXT_PUBLIC_URL+"/api/addComment", {
+      fetch("https://image-gram-neon.vercel.app"+"/api/addComment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

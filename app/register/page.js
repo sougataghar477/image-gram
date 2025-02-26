@@ -18,7 +18,7 @@ export default function Register(){
         let dataPath  = supabase.storage.from("plantgramstorage").getPublicUrl(data.path);
         let image = dataPath.data.publicUrl;
         console.log("Uploaded file URL:", image);
-        await fetch(process.env.NEXT_URL+'/api/register', {
+        await fetch('https://image-gram-neon.vercel.app'+'/api/register', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
