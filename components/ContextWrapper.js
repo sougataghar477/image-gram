@@ -10,7 +10,7 @@ export const ContextProvider = ({ children }) => {
   let { status, data } = useSession();
   const [state, setState] = useState(null); // Use `null` to track if fetch is needed
   const [selectedElementRefId,setselectedElement]=useState(null);
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(() => "light");
 
   useEffect(() => {
     if (!localStorage.getItem("theme")) {
