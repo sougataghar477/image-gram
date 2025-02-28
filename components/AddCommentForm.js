@@ -42,7 +42,7 @@ export default function AddCommentForm({ author,comments,id,showAllComments,setC
           
           
           
-          setComments(data?.replies?.reverse());
+          setComments(data.replies.reverse());
           setReplyflag({ flag: false, id: '',selectedElement:'' });
 
         })
@@ -65,7 +65,7 @@ export default function AddCommentForm({ author,comments,id,showAllComments,setC
         })
       })
         .then(response => response.json())
-        .then(data => {setCommentsLength(data?.comments?.length); setComments(data?.comments?.reverse());e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
+        .then(data => {setCommentsLength(data?.comments?.length); setComments(data.comments.reverse());e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
         .catch(error => console.error("Error:", error));
     }
 
