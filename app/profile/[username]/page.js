@@ -14,7 +14,7 @@ export default  function Profile({params}){
     
     useEffect(()=>{
         
-    const data =  fetch("https://image-gram-neon.vercel.app"+"/api/user", {
+    const data =  fetch("https://image-gram-neon.vercel.app/api/user", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

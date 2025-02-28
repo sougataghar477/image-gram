@@ -1,15 +1,14 @@
 'use client';
- 
+ import EmotePicker from "./EmotePicker";
 import Comment from "./Comment";
 import { AppContext } from "./ContextWrapper";
 import { useState, useContext,useRef } from "react";
- 
-export default function AddCommentForm({ author,comments, id }) {
+export default function AddCommentForm({ author,comments,id,showAllComments,setCommentsLength }) {
 
  
   let reversedComments = [...(comments || [])].reverse();
 
-   
+  const [showEmojiPicker,setPicker] =useState(false);
   const userContext = useContext(AppContext);
   const [replyFlag, setReplyflag] = useState({ flag: false, id: '',selectedElement:'' });
   const [replies,setReplies]=useState([])
@@ -66,7 +65,7 @@ export default function AddCommentForm({ author,comments, id }) {
         })
       })
         .then(response => response.json())
-        .then(data => { setComments(data?.comments?.reverse());e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
+        .then(data => {setCommentsLength(data?.comments?.length); setComments(data?.comments?.reverse());e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
         .catch(error => console.error("Error:", error));
     }
 
@@ -75,34 +74,34 @@ export default function AddCommentForm({ author,comments, id }) {
   let [postComments, setComments] = useState([]);
   // setComments(comments)
   let a = postComments.length > 0 ? postComments.reverse() : reversedComments;
- 
+  const displayedComments = showAllComments ? a : a.slice(0, 3);
   return <>
-    {a?.map((comment, index) => {
-      return <Comment
-      commentAuthor={comment?.commenter}
-      postAuthor={author}
-      setReplyflag={setReplyflag}  
-      setInputComment={setInputComment} 
-      replies={replies}
-      setReplies={setReplies} 
-      comment={comment} 
-      key={index}
-      postId={id}
-      setComments={setComments}
-      />
-    })}
-    <form onSubmit={submitComment} className="flex gap-4">
+{displayedComments.map((comment, index) => (
+  <Comment
+    key={index}
+    commentAuthor={comment?.commenter}
+    postAuthor={author}
+    setReplyflag={setReplyflag}
+    setInputComment={setInputComment}
+    replies={replies}
+    setReplies={setReplies}
+    comment={comment}
+    postId={id}
+    setComments={setComments}
+  />
+))}
+    <form onSubmit={submitComment} className="relative flex gap-2 items-center">
       <input
         value={inputComment}
-        id="commentInput"
+        required
+        id={"commentInput"+id}
         className="w-full p-2 border-slate-800 border-2 rounded-lg"
         onInput={e => {setInputComment(e.target.value);}} />
-      <button type="submit" className=" rounded-lg px-4 bg-sky-600 text-white">Comment</button>
+        <span className="cursor-pointer" onClick={()=> setPicker(prev => !prev)} title="Click me to select emojis">😀</span>
+        {showEmojiPicker && <EmotePicker setPicker={setPicker} setInputComment={setInputComment} fromCommentForm={true} />}
+      <button type="submit" className=" rounded-lg p-2 bg-sky-600 text-white">Comment</button>
       
     </form>
-    <div>
-
-    </div>
-    {JSON.stringify(replyFlag)}
+ 
   </>
 }

@@ -4,6 +4,9 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { AppContext } from "./ContextWrapper";
 export default function LikePost({author,id,likes}){
+    useEffect(()=>{
+        console.log(likes,'LIKES')
+    },[])
     let [postLiked,setPostLiked]=useState([]);
     let userContext=useContext(AppContext);
     console.log(author,'Author From LikePost')
@@ -25,12 +28,12 @@ export default function LikePost({author,id,likes}){
     
      }
     
-     return <><span  onClick={()=>{handlePostLikes()}} >
+     return <><span className="cursor-pointer" onClick={()=>{handlePostLikes()}} >
         {postLiked?.includes(userContext?.state?.user?.username) || likes?.includes(userContext?.state?.user?.username)?
-        <FaHeart fill="red" fontSize={20}/>:
-        <FaRegHeart fill="red" fontSize={20}/>}
+        <div className="flex items-center gap-1"><FaHeart fill="red" fontSize={20}/><span className="font-bold">{postLiked?.length || likes?.length}</span></div>:
+        <div className="flex items-center gap-1"><FaRegHeart fill="red" fontSize={20}/><span className="font-bold">{postLiked?.length || likes?.length}</span></div>}
         
      </span>
-     {postLiked?.toString()}
+     
      </>
 }

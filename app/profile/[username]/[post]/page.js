@@ -15,19 +15,23 @@ export default async function Post({ params }) {
     });
     
     const response = await data?.json();
-     console.log(response?.post[0])
-
-    return <div className="flex mt-5 gap-5 flex-wrap">
+     console.log('Post',response?.post[0])
+    if(response?.post[0]){
+            return <div className="flex mt-5 gap-5 flex-wrap">
         <img className="max-w-[400px] object-cover" src={response?.post[0]?.image} />
         <div className="relative h-screen overflow-scroll max-w-[400px]">
             <div className="flex gap-2">
                 <img className="w-10 h-10 rounded-full" src={response?.avatar} />
                 <h1 className="font-bold"><Link href={'/profile/' + post.username}>{response?.username}</Link></h1>
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+            <p>
+                {response?.post[0].description ? response?.post[0]?.description :
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '}
+
+            </p>
 
 
-            <div className=" bottom-0  bg-white py-8">
+            <div className=" bottom-0 py-8">
                 <div className="flex gap-4 mb-4">
                     <LikePost author={response?.post[0]?.author} username={post?.username} id={post?.post} likes={response?.post[0]?.likes}/>
                     <label htmlFor="commentInput"><FaRegComment fontSize={20}/></label>
@@ -42,4 +46,9 @@ export default async function Post({ params }) {
         </div>
 
     </div>
+    }
+    else{
+        return <h1>No Post Found</h1>
+    }
+
 }

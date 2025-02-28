@@ -33,7 +33,9 @@ export default function Register(){
           
     }
     return <div className="max-w-[400px] mt-4">
-        <form onSubmit={handleSubmit}>
+        <p className="itaic font-bold">Sign up to share your moments, connect with others, and engage with content through likes and comments. Enjoy a personalized feed, private messaging, and a customizable profile. Join now and be part of a vibrant community! 🚀📸</p>
+        <form className="mt-4" onSubmit={handleSubmit}>
+          <h1 className="mb-4 font-bold">Register Now</h1>
             <input required name="name" className="mb-8  border-2 border-sky-500 w-full py-4 px-2 placeholder:italic" type="text" placeholder="Enter Name"/>
             <input required name="username" className="mb-8 border-2 border-sky-500 w-full py-4 px-2 placeholder:italic" type="text" placeholder="Enter username"/>
             <input required name="email" className="mb-8 border-2 border-sky-500 w-full py-4 px-2 placeholder:italic" type="text" placeholder="Enter email"/>

@@ -98,7 +98,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
     setInputComment(`@${comment.commenter} `);
     setReplyflag({ flag: true, id: comment.commentId });
   }}
-  htmlFor="commentInput"
+  htmlFor={"commentInput"}
 >
   <span>Reply</span>
 </label>}
