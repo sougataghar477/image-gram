@@ -49,7 +49,7 @@ export default  function Profile({params}){
     return <div className="mt-5 basis-[640px]">
         <div className="flex">
             <div className="">
-                <img className="rounded-full w-24 h-24 object-cover" src={theirProfile?.user?.avatar}/>
+                <Image alt="alt" className="rounded-full w-24 h-24 object-cover" src={theirProfile?.user?.avatar}/>
             </div>
             <div>
                 <div className="flex gap-2">

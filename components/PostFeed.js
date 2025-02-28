@@ -20,7 +20,7 @@ export default function PostFeed({ post }) {
       {/* Post Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <img className="w-12 h-12 rounded-full object-cover" src={post.avatar} alt="User Avatar" />
+          <Image className="w-12 h-12 rounded-full object-cover" src={post.avatar} alt="User Avatar" />
           <div>
             <Link href={`/profile/${post.username}`}>
               <span className="font-bold">{post.author}</span>

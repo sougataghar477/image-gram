@@ -98,7 +98,7 @@ export default function AddCommentForm({ author,comments,id,showAllComments,setC
         className="w-full p-2 border-slate-800 border-2 rounded-lg"
         onInput={e => {setInputComment(e.target.value);}} />
         <span className="cursor-pointer" onClick={()=> setPicker(prev => !prev)} title="Click me to select emojis">😀</span>
-        {showEmojiPicker && <EmotePicker setPicker={setPicker} setInputComment={setInputComment} fromCommentForm={true} />}
+        {/* {showEmojiPicker && <EmotePicker setPicker={setPicker} setInputComment={setInputComment} fromCommentForm={true} />} */}
       <button type="submit" className=" rounded-lg p-2 bg-sky-600 text-white">Comment</button>
       
     </form>
