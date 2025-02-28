@@ -1,6 +1,6 @@
 'use client';
 import {use,useState,useEffect, useContext} from "react";
-import Image from "next/image";
+ 
 import Link from "next/link";
 import { AppContext } from "@/components/ContextWrapper";
 export default  function Profile({params}){
@@ -49,7 +49,7 @@ export default  function Profile({params}){
     return <div className="mt-5 basis-[640px]">
         <div className="flex">
             <div className="">
-                <Image alt="alt" className="rounded-full w-24 h-24 object-cover" src={theirProfile?.user?.avatar}/>
+                <img className="rounded-full w-24 h-24 object-cover" src={theirProfile?.user?.avatar}/>
             </div>
             <div>
                 <div className="flex gap-2">
@@ -73,7 +73,7 @@ export default  function Profile({params}){
         <div className="flex flex-wrap mt-5">
             {theirProfile?.user?.posts.length>0?theirProfile?.user?.posts.map((post,index) => 
             <Link key={index} href={`/profile/${username}/${post.id}`}>
-                <Image alt="alt" className="object-cover object-top w-[300px] h-[300px]" key={index} src={post.image}/>
+                <img className="object-cover object-top w-[300px] h-[300px]" key={index} src={post.image}/>
             </Link>):<h2 className="font-bold">No Posts. <Link className="underline" href={'/create'}>Create one</Link></h2>}
         </div>
     </div>

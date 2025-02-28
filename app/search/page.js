@@ -1,7 +1,7 @@
 'use client';
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image";
+
 export default function Search(){
     let [input,setInput] = useState("");
     const [searchedUsers,setSearchedUsers]= useState([]);
@@ -29,7 +29,7 @@ export default function Search(){
         </form>
         <div className="mt-4">
         {searchedUsers?.map((user,index)=> <Link href={`/profile/${user.username}`} key={index}><div className="flex items-center mt-4">
-            <Image alt="alt" className="object-cover w-10 h-10 rounded-full" src={user.avatar}/>
+            <img className="object-cover w-10 h-10 rounded-full" src={user.avatar}/>
             <div>
                 <p>{user.username}</p>
                 <p>{user.name}</p>

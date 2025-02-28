@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useState,useContext } from "react";
 import { supabase } from "@/utils/supabaseClient";
@@ -85,7 +84,7 @@ if(status==="authenticated"){
   <h1>Create</h1>
   {previewImage && <div className="mt-4">
     <h1 className="font-bold">Preview</h1>
-  <Image alt="an image" className="mt-4 max-w-[320px]" src={previewImage}/></div>}
+  <img className="mt-4 max-w-[320px]" src={previewImage}/></div>}
   <div className="relative">
   <textarea
     className="border-2 border-sky-500 w-full p-4 placeholder:italic"

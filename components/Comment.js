@@ -1,6 +1,6 @@
 'use client';
 import { useState,useContext,useEffect } from "react";
- import Image from "next/image";
+ 
 import { AppContext } from "./ContextWrapper";
 import Link from "next/link";
 export default function Comment({ commentAuthor,postAuthor,comment, replies,setComments, setInputComment, setReplyflag,postId }) {
@@ -69,7 +69,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
   }
   return <>
     <div className="flex">
-      {comment?.avatar &&       <Image alt="alt" className="w-12 h-12 rounded-full object-cover"
+      {comment?.avatar &&       <img className="w-12 h-12 rounded-full object-cover"
         src={comment?.avatar}
 
       />}
@@ -123,7 +123,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
               <div key={commentReplyfromProps.replyId}>
                 <div className="flex">
                    
-                  <Image alt="alt" className="w-12 h-12 rounded-full object-cover" src={commentReplyfromProps.avatar}/>
+                  <img className="w-12 h-12 rounded-full object-cover" src={commentReplyfromProps.avatar}/>
                   <div>
                  <Link href={'/profile/'+commentReplyfromProps.replier}><b>{commentReplyfromProps.replier}</b></Link>
                  <p id={'p'+commentReplyfromProps.replyId}>{commentReplyfromProps.reply}</p>

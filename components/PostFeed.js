@@ -7,7 +7,7 @@ import Link from "next/link";
 import AddCommentForm from "./AddCommentForm";
 import LikePost from "./LikePost";
 import { FaRegComment } from "react-icons/fa6";
-import Image from "next/image";
+
 
 export default function PostFeed({ post }) {
   console.log(post)
@@ -20,7 +20,7 @@ export default function PostFeed({ post }) {
       {/* Post Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <Image className="w-12 h-12 rounded-full object-cover" src={post.avatar} alt="User Avatar" />
+          <img className="w-12 h-12 rounded-full object-cover" src={post.avatar} alt="User Avatar" />
           <div>
             <Link href={`/profile/${post.username}`}>
               <span className="font-bold">{post.author}</span>
@@ -33,7 +33,7 @@ export default function PostFeed({ post }) {
       {/* Post Image */}
       <Link target="_blank" href={`/profile/${post.username}/${post.id}`}>
         <div className="my-2 max-w-[400px]">
-          <Image alt="alt" className="object-cover" src={post.image}  />
+          <img className="object-cover" src={post.image} alt="Post" />
         </div>
       </Link>
       <p>{post.description}</p>
