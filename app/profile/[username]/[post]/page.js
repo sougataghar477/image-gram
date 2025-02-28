@@ -1,6 +1,6 @@
 import AddCommentForm from "@/components/AddCommentForm";
 import LikePost from "@/components/LikePost";
-import { FaRegHeart } from "react-icons/fa6";
+import Image from "next/image";
 import { FaRegComment } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa6";
 import Link from "next/link";
@@ -18,10 +18,10 @@ export default async function Post({ params }) {
      console.log('Post',response?.post[0])
     if(response?.post[0]){
             return <div className="flex mt-5 gap-5 flex-wrap">
-        <img className="max-w-[400px] object-cover" src={response?.post[0]?.image} />
+        <Image alt="alt" className="max-w-[400px] object-cover" src={response?.post[0]?.image} />
         <div className="relative h-screen overflow-scroll max-w-[400px]">
             <div className="flex gap-2">
-                <img className="w-10 h-10 rounded-full" src={response?.avatar} />
+                <Image alt="alt" className="w-10 h-10 rounded-full" src={response?.avatar} />
                 <h1 className="font-bold"><Link href={'/profile/' + post.username}>{response?.username}</Link></h1>
             </div>
             <p>

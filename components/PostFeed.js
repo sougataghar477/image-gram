@@ -7,7 +7,7 @@ import Link from "next/link";
 import AddCommentForm from "./AddCommentForm";
 import LikePost from "./LikePost";
 import { FaRegComment } from "react-icons/fa6";
- 
+import Image from "next/image";
 
 export default function PostFeed({ post }) {
   console.log(post)
@@ -33,7 +33,7 @@ export default function PostFeed({ post }) {
       {/* Post Image */}
       <Link target="_blank" href={`/profile/${post.username}/${post.id}`}>
         <div className="my-2 max-w-[400px]">
-          <img className="object-cover" src={post.image} alt="Post" />
+          <Image alt="alt" className="object-cover" src={post.image}  />
         </div>
       </Link>
       <p>{post.description}</p>
