@@ -85,7 +85,7 @@ if(status==="authenticated"){
   <h1>Create</h1>
   {previewImage && <div className="mt-4">
     <h1 className="font-bold">Preview</h1>
-  <Image className="mt-4 max-w-[320px]" src={previewImage}/></div>}
+  <Image alt="an image" className="mt-4 max-w-[320px]" src={previewImage}/></div>}
   <div className="relative">
   <textarea
     className="border-2 border-sky-500 w-full p-4 placeholder:italic"
