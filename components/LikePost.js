@@ -4,9 +4,7 @@ import { FaRegHeart } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { AppContext } from "./ContextWrapper";
 export default function LikePost({author,id,likes}){
-    useEffect(()=>{
-        console.log(likes,'LIKES')
-    },[])
+ 
     let [postLiked,setPostLiked]=useState([]);
     let userContext=useContext(AppContext);
     console.log(author,'Author From LikePost')
