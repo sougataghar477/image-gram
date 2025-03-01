@@ -60,8 +60,10 @@ export default function PostFeed({ post }) {
        showAllComments={showAllComments} 
        setCommentsLength={setCommentsLength} 
        comments={post.comments.slice()} 
-       id={post?.id} />
+       id={post?.id}
        previewImage={true}
+       />
+       
     </div>
   );
 }
