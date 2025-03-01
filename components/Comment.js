@@ -1,13 +1,13 @@
 'use client';
 import { useState,useContext,useEffect } from "react";
- 
+import { useSession } from "next-auth/react";
 import { AppContext } from "./ContextWrapper";
 import Link from "next/link";
 export default function Comment({ commentAuthor,postAuthor,comment, replies,setComments, setInputComment, setReplyflag,postId }) {
   let userContext=useContext(AppContext);
   let username =userContext?.state?.user?.username;
   let selectedElementRefId=userContext.selectedElementRefId;
- 
+  let {status} = useSession()
   let [showReplies, setShowReplies] = useState(false);
   
    console.log(comment.replies);
@@ -91,7 +91,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
         <p id={'p'+comment.commentId}>{comment.comment}</p>
         <div className="flex gap-4 text-sm font-semibold">
 { comment?.likes &&        <span
-  className={`${comment?.likes?.includes(username) ? 'text-red-600' : ''} cursor-pointer`}
+  className={`${comment?.likes?.includes(username) ? 'text-red-600' : ''} cursor-pointer ${status==="unauthenticated"?'pointer-events-none':''}`}
   onClick={() => handleLikes(comment.comment,'Main Comment', comment.commentId, '', comment?.likes?.includes(username))}
 >
  
@@ -139,7 +139,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
                  <p id={'p'+commentReplyfromProps.replyId}>{commentReplyfromProps.reply}</p>
                   <div className="flex gap-4 text-sm">
                   <span 
-                  className={`${commentReplyfromProps?.likes?.includes(username) ? 'text-red-600' : ''} cursor-pointer`}
+                  className={`${status==="unauthenticated"?'pointer-events-none':''} ${commentReplyfromProps?.likes?.includes(username) ? 'text-red-600' : ''} cursor-pointer `}
                   onClick={()=>{handleLikes(commentReplyfromProps.reply,'Nested Comment',comment.commentId,commentReplyfromProps.replyId,commentReplyfromProps?.likes?.includes(username)); }}>
                              
                               {(commentReplyfromProps?.likes?.length > 1) 
