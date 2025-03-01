@@ -55,9 +55,9 @@ export default function Feed() {
     ) : (
       <p className="text-center mt-4 text-gray-500">No posts found.</p>
     )
-  ) : (
+  ) : status==="loading"?(
     <p className="text-center mt-4 text-gray-500">Loading...</p>
-  )}
+  ):null}
 </div>
   );
 }
