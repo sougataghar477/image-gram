@@ -59,7 +59,7 @@ export default function PostFeed({ post }) {
        author={post?.author}
        showAllComments={showAllComments} 
        setCommentsLength={setCommentsLength} 
-       comments={post?.comments} 
+       comments={post.comments.slice()} 
        id={post?.id} />
     </div>
   );
