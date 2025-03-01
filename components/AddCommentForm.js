@@ -4,6 +4,7 @@ import Comment from "./Comment";
 import { AppContext } from "./ContextWrapper";
 import { useState, useContext,useRef } from "react";
 import { useSession } from "next-auth/react";
+import { ToastContainer } from "react-toastify";
 export default function AddCommentForm({ author,comments,id,showAllComments,setCommentsLength }) {
 let {status}=useSession()
  
@@ -85,6 +86,7 @@ let {status}=useSession()
   let a = postComments.length > 0 ? [...postComments].slice().reverse() : reversedComments;
   const displayedComments = showAllComments ? a.slice() : a.slice(0, 3);
   return <>
+  <ToastContainer/>
 {displayedComments.map((comment, index) => (
   <Comment
     key={index}
