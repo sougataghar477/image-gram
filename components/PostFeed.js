@@ -61,6 +61,7 @@ export default function PostFeed({ post }) {
        setCommentsLength={setCommentsLength} 
        comments={post.comments.slice()} 
        id={post?.id} />
+       previewImage={true}
     </div>
   );
 }
