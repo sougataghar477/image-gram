@@ -28,13 +28,13 @@ export default function Search(){
             <button className="block rounded-full border-0 bg-sky-500 text-white px-4 py-2 text-sm font-semibold disabled:opacity-50" type="submit">Search User</button>
         </form>
         <div className="mt-4">
-        {searchedUsers?.map((user,index)=> <Link href={`/profile/${user.username}`} key={index}><div className="flex items-center mt-4">
+        {searchedUsers.length>0 ? searchedUsers?.map((user,index)=> <Link href={`/profile/${user.username}`} key={index}><div className="flex items-center mt-4">
             <img className="object-cover w-10 h-10 rounded-full" src={user.avatar}/>
             <div>
                 <p>{user.username}</p>
                 <p>{user.name}</p>
             </div>
-        </div></Link>)}
+        </div></Link>):<h1>No User Found</h1>}
         </div>
 
     </div>
