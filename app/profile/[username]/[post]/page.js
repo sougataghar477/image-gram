@@ -41,7 +41,7 @@ export default async function Post({ params }) {
                 <h1 className="font-bold italic">Comments</h1>
  
             </div>
-                <AddCommentForm author={response?.post[0]?.author}  id={response?.post[0]?.id} comments={response.post[0].comments.slice() || []}/>
+                <AddCommentForm  showAllComments={true} author={response?.post[0]?.author}  id={response?.post[0]?.id} comments={response.post[0].comments.slice() || []}/>
             </div>
         </div>
 
