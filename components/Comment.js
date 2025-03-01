@@ -37,7 +37,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
         .then(response => response.json())
         .then(data => {
           console.log("Before reversing:", data.data);
-          const reversedData = [...data.data].slice().reverse();
+          const reversedData = [...data.data].slice();
           console.log("After reversing:", reversedData);
           setComments(reversedData);
           setComments(prev => [...prev])
@@ -66,11 +66,14 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
         })
       })
       .then(response => response.json())
-      .then(data => { 
-        setComments(prevComments => [...data.data].reverse());
- 
+      .then(data => {
+        console.log("Before reversing:", data.data);
+        const reversedData = [...data.data].slice();
+        console.log("After reversing:", reversedData);
+        setComments(reversedData);
+        setComments(prev => [...prev])
       })
-      .catch(error => console.error('Errorr:', error));
+      .catch(error => console.error('Error:', error));
     }
     
   }
