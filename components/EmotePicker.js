@@ -10,7 +10,7 @@ export default function EmotePicker({setPicker,setInputComment,fromCommentForm,s
         }
     }
     console.log(path)
-    return <div className={`absolute ${path === '/create' ? (previewImage ? "bottom-0" : "") : "top-0"}`}
+    return <div className={`absolute ${path === '/create' ? (previewImage ? "bottom-0" : "") : "bottom-10"}`}
 >
         <EmojiPicker onEmojiClick={emoji => {
             setPicker(false);
