@@ -3,6 +3,7 @@ import { useState,useContext,useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { AppContext } from "./ContextWrapper";
 import Link from "next/link";
+import { ToastContainer, toast } from 'react-toastify';
 export default function Comment({ commentAuthor,postAuthor,comment, replies,setComments, setInputComment, setReplyflag,postId }) {
   let userContext=useContext(AppContext);
   let username =userContext?.state?.user?.username;
@@ -17,7 +18,14 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
       }
     }, [selectedElementRefId,comment.commentId]);
   let handleLikes=(comment,commentType,commentId,replyId,isLiked)=>{
-
+    if(status ==="unauthenticated"){
+      toast("You Need to be logged in to like or comment", { position: "bottom-right",style: {
+        background: "#0ea5e9",  
+        color: "#fff", // White text
+      }, },);
+      return
+    }
+    if(status==="authenticated"){
     if(commentType==='Main Comment'){
       fetch('https://image-gram-neon.vercel.app/api/addLikes', {
         method: 'POST',
@@ -75,10 +83,12 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
       })
       .catch(error => console.error('Error:', error));
     }
+  }
     
   }
   return <>
     <div className="flex">
+      <ToastContainer/>
       {comment?.avatar &&       <img className="w-12 h-12 rounded-full object-cover"
         src={comment?.avatar}
 
@@ -91,7 +101,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
         <p id={'p'+comment.commentId}>{comment.comment}</p>
         <div className="flex gap-4 text-sm font-semibold">
 { comment?.likes &&        <span
-  className={`${comment?.likes?.includes(username) ? 'text-red-600' : ''} cursor-pointer ${status==="unauthenticated"?'pointer-events-none':''}`}
+  className={`${comment?.likes?.includes(username) ? 'text-red-600' : ''} cursor-pointer`}
   onClick={() => handleLikes(comment.comment,'Main Comment', comment.commentId, '', comment?.likes?.includes(username))}
 >
  
@@ -139,7 +149,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
                  <p id={'p'+commentReplyfromProps.replyId}>{commentReplyfromProps.reply}</p>
                   <div className="flex gap-4 text-sm">
                   <span 
-                  className={`${status==="unauthenticated"?'pointer-events-none':''} ${commentReplyfromProps?.likes?.includes(username) ? 'text-red-600' : ''} cursor-pointer `}
+                  className={`${commentReplyfromProps?.likes?.includes(username) ? 'text-red-600' : ''} cursor-pointer`}
                   onClick={()=>{handleLikes(commentReplyfromProps.reply,'Nested Comment',comment.commentId,commentReplyfromProps.replyId,commentReplyfromProps?.likes?.includes(username)); }}>
                              
                               {(commentReplyfromProps?.likes?.length > 1) 

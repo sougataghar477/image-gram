@@ -3,8 +3,9 @@
 import Comment from "./Comment";
 import { AppContext } from "./ContextWrapper";
 import { useState, useContext,useRef } from "react";
+import { useSession } from "next-auth/react";
 export default function AddCommentForm({ author,comments,id,showAllComments,setCommentsLength }) {
-
+let {status}=useSession()
  
   let reversedComments = [...(comments || [])].reverse();
 
@@ -14,6 +15,14 @@ export default function AddCommentForm({ author,comments,id,showAllComments,setC
   const [replies,setReplies]=useState([])
   let submitComment = (e) => {
     e.preventDefault();
+    if(status==="unauthenticated"){
+              toast("You need to be logged in to like or comment", { position: "bottom-right",style: {
+                background: "#0ea5e9",  
+                color: "#fff", // White text
+              }, },);
+              return
+    }
+    if(status==="authenticated"){
     if (replyFlag.flag) {
       fetch("https://image-gram-neon.vercel.app"+"/api/addReply", {
         method: "POST",
@@ -68,7 +77,7 @@ export default function AddCommentForm({ author,comments,id,showAllComments,setC
         .then(data => {setCommentsLength(data?.comments?.length); setComments(data.comments.reverse());e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
         .catch(error => console.error("Error:", error));
     }
-
+}
   }
   let [inputComment, setInputComment] = useState("");
   let [postComments, setComments] = useState([]);
