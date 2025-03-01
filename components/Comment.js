@@ -39,7 +39,8 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
       })
       .then(response => response.json())
       .then(data => { 
-        setComments([...data.data].slice().reverse()); 
+        setComments(prevComments => [...data.data].reverse());
+ 
       })
       .catch(error => console.error('Error:', error));
     }
@@ -65,7 +66,8 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
       })
       .then(response => response.json())
       .then(data => { 
-        setComments([...data.data].slice().reverse()); 
+        setComments(prevComments => [...data.data].reverse());
+ 
       })
       .catch(error => console.error('Errorr:', error));
     }
