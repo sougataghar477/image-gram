@@ -34,7 +34,7 @@ export default async function Post({ params }) {
             <div className=" bottom-0 py-8">
                 <div className="flex gap-4 mb-4">
                     <LikePost author={response?.post[0]?.author} username={post?.username} id={post?.post} likes={response?.post[0]?.likes}/>
-                    <label htmlFor="commentInput"><FaRegComment fontSize={20}/></label>
+                    <label htmlFor={"commentInput"+post.post}><FaRegComment fontSize={20}/></label>
                     <FaRegPaperPlane fontSize={20}/>
                 </div>
                 <div>
