@@ -51,7 +51,7 @@ let {status}=useSession()
           
           
           
-          setComments(data.replies.reverse());
+          setComments([...data.replies]);
           setReplyflag({ flag: false, id: '',selectedElement:'' });
 
         })
@@ -74,7 +74,7 @@ let {status}=useSession()
         })
       })
         .then(response => response.json())
-        .then(data => {setCommentsLength(data?.comments?.length); setComments(data.comments.reverse());e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
+        .then(data => {setCommentsLength(data?.comments?.length); setComments([...data.comments]);e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
         .catch(error => console.error("Error:", error));
     }
 }
