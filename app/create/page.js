@@ -93,7 +93,7 @@ if(status==="authenticated"){
     onChange={e => setDescription(e.target.value)}
   >
   </textarea>
-    {showPicker && <EmotePicker setDescription={setDescription} setPicker={setPicker}/>}
+    {showPicker && <EmotePicker previewImage={previewImage} setDescription={setDescription} setPicker={setPicker}/>}
     <span onClick={()=> setPicker(prev => !prev)} className="absolute right-2 top-1/2 -translate-y-1/2">😳</span>
   </div>
   
