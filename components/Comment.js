@@ -19,30 +19,30 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
   let handleLikes=(comment,commentType,commentId,replyId,isLiked)=>{
 
     if(commentType==='Main Comment'){
-      fetch('https://image-gram-neon.vercel.app'+'/api/addLikes', {
+      fetch('https://image-gram-neon.vercel.app/api/addLikes', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          commentAuthor:commentAuthor,
-          postAuthor:postAuthor,
-          self:commentAuthor === postAuthor,
-          comment:comment,
-          commentType:commentType,
-          username:username,
-          postId:postId,
-         commentId:commentId,
-         isLiked:isLiked
-        
+          commentAuthor,
+          postAuthor,
+          self: commentAuthor === postAuthor,
+          comment,
+          commentType,
+          username,
+          postId,
+          commentId,
+          isLiked
         })
       })
-      .then(response => response.json())
-      .then(data => { 
-        setComments(prevComments => [...data.data].reverse());
- 
-      })
-      .catch(error => console.error('Error:', error));
+        .then(response => response.json())
+        .then(data => {
+          console.log("Before reversing:", data.data);
+          const reversedData = [...data.data].slice().reverse();
+          console.log("After reversing:", reversedData);
+          setComments(reversedData);
+        })
+        .catch(error => console.error('Error:', error));
+      
     }
     else{
       fetch('https://image-gram-neon.vercel.app'+'/api/addLikes', {
