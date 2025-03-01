@@ -46,16 +46,18 @@ export default function Feed() {
   }
 
   return (
-    <div className="max-w-[640px]">
-      {status === "authenticated" ? (
-        posts.length > 0 ? (
-          posts.map((post) => <PostFeed post={post} key={post.id} />)
-        ) : (
-          <p className="text-center mt-4 text-gray-500">No posts found.</p>
-        )
-      ) : (
-        <SignIn />
-      )}
-    </div>
+<div className="max-w-[640px]">
+  {status === "unauthenticated" ? (
+    <SignIn />
+  ) : status === "authenticated" ? (
+    posts.length > 0 ? (
+      posts.map((post) => <PostFeed post={post} key={post.id} />)
+    ) : (
+      <p className="text-center mt-4 text-gray-500">No posts found.</p>
+    )
+  ) : (
+    <p className="text-center mt-4 text-gray-500">Loading...</p>
+  )}
+</div>
   );
 }
