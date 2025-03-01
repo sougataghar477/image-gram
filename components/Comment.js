@@ -40,6 +40,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
           const reversedData = [...data.data].slice().reverse();
           console.log("After reversing:", reversedData);
           setComments(reversedData);
+          setComments(prev => [...prev])
         })
         .catch(error => console.error('Error:', error));
       
