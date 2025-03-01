@@ -73,7 +73,7 @@ export default function AddCommentForm({ author,comments,id,showAllComments,setC
   let [inputComment, setInputComment] = useState("");
   let [postComments, setComments] = useState([]);
   // setComments(comments)
-  let a = postComments.length > 0 ? postComments.reverse() : reversedComments;
+  let a = postComments.length > 0 ? [...postComments].reverse() : reversedComments;
   const displayedComments = showAllComments ? a : a.slice(0, 3);
   return <>
 {displayedComments.map((comment, index) => (
