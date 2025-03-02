@@ -80,7 +80,7 @@ let {status}=useSession()
   }
   let [inputComment, setInputComment] = useState("");
   let [postComments, setComments] = useState([]);
-  // setComments(comments)
+  setComments(comments)
   let a = postComments.length > 0 ? [...postComments].slice().reverse() : reversedComments;
   const displayedComments = showAllComments ? a.slice() : a.slice(0, 3);
   return <>

@@ -16,7 +16,7 @@ export default async function Post({ params }) {
     
     const response = await data.json();
      console.log('Post',response?.post[0])
-    if(response?.post[0],"Debugging in Post/page"){
+    if(response?.post[0]){
             return <div className="flex mt-5 gap-5 flex-wrap">
         <img className="max-w-[400px] object-cover" src={response?.post[0]?.image} />
         <div className="relative h-screen overflow-scroll max-w-[400px]">
