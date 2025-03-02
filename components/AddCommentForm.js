@@ -4,7 +4,6 @@ import Comment from "./Comment";
 import { AppContext } from "./ContextWrapper";
 import { useState, useContext,useRef } from "react";
 import { useSession } from "next-auth/react";
-import { ToastContainer } from "react-toastify";
 export default function AddCommentForm({ author,comments,id,showAllComments,setCommentsLength }) {
 let {status}=useSession()
  
@@ -52,7 +51,7 @@ let {status}=useSession()
           
           
           
-          setComments([...data.replies]);
+          setComments(data.replies);
           setReplyflag({ flag: false, id: '',selectedElement:'' });
 
         })
@@ -75,7 +74,7 @@ let {status}=useSession()
         })
       })
         .then(response => response.json())
-        .then(data => {setCommentsLength(data?.comments?.length); setComments([...data.comments]);e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
+        .then(data => {setCommentsLength(data?.comments?.length); setComments(data.comments);e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
         .catch(error => console.error("Error:", error));
     }
 }
@@ -86,7 +85,6 @@ let {status}=useSession()
   let a = postComments.length > 0 ? [...postComments].slice().reverse() : reversedComments;
   const displayedComments = showAllComments ? a.slice() : a.slice(0, 3);
   return <>
-  <ToastContainer/>
 {displayedComments.map((comment, index) => (
   <Comment
     key={index}
