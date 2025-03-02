@@ -14,9 +14,9 @@ export default async function Post({ params }) {
         body: JSON.stringify({ username: post.username, id: post.post })
     });
     
-    const response = await data?.json();
+    const response = await data.json();
      console.log('Post',response?.post[0])
-    if(response?.post[0]){
+    if(response?.post[0],"Debugging in Post/page"){
             return <div className="flex mt-5 gap-5 flex-wrap">
         <img className="max-w-[400px] object-cover" src={response?.post[0]?.image} />
         <div className="relative h-screen overflow-scroll max-w-[400px]">
@@ -41,7 +41,7 @@ export default async function Post({ params }) {
                 <h1 className="font-bold italic">Comments</h1>
  
             </div>
-                <AddCommentForm  showAllComments={true} author={response?.post[0]?.author}  id={response?.post[0]?.id} comments={response.post[0].comments.slice() || []}/>
+                <AddCommentForm  showAllComments={true} author={response?.post[0]?.author}  id={response?.post[0]?.id} comments={response.post[0].comments}/>
             </div>
         </div>
 
