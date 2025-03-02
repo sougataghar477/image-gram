@@ -22,7 +22,6 @@ let {status}=useSession()
               }, },);
               return
     }
-    if(status==="authenticated"){
     if (replyFlag.flag) {
       fetch("https://image-gram-neon.vercel.app"+"/api/addReply", {
         method: "POST",
@@ -51,7 +50,7 @@ let {status}=useSession()
           
           
           
-          setComments(data.replies);
+          setComments(data.replies.reverse());
           setReplyflag({ flag: false, id: '',selectedElement:'' });
 
         })
@@ -74,10 +73,10 @@ let {status}=useSession()
         })
       })
         .then(response => response.json())
-        .then(data => {setCommentsLength(data?.comments?.length); setComments(data.comments);e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
+        .then(data => {setCommentsLength(data?.comments?.length);console.log(data.comments,'Debugging'); setComments(data.comments);e.target.parentElement.parentElement.scrollTo({top:0,behavior:'smooth'});setInputComment('') })
         .catch(error => console.error("Error:", error));
     }
-}
+
   }
   let [inputComment, setInputComment] = useState("");
   let [postComments, setComments] = useState([]);
