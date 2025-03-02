@@ -87,7 +87,7 @@ export default function Comment({ commentAuthor,postAuthor,comment, replies,setC
     
   }
   return <>
-    <div className="flex gap-1">
+    <div className="flex gap-4">
       <ToastContainer/>
       {comment?.avatar &&       <img className="w-12 h-12 rounded-full object-cover"
         src={comment?.avatar}
