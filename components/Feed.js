@@ -14,7 +14,7 @@ export default function Feed() {
     const fetchPosts = async () => {
       if (status === "authenticated") {
         try {
-          const response = await fetch("hhttps://image-gram-neon.vercel.app" + "/api/fetchposts", {
+          const response = await fetch("https://image-gram-neon.vercel.app" + "/api/fetchposts", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ id }),
