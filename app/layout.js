@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`dark:bg-black ${geistSans.variable} ${geistMono.variable} flex-wrap antialiased container flex gap-[100px] justify-center`}
+        className={`dark:bg-black ${geistSans.variable} ${geistMono.variable} flex-wrap antialiased container-2 flex gap-[100px] justify-center`}
       >
        
         <SessionWrapper>

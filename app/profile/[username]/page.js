@@ -70,7 +70,7 @@ export default  function Profile({params}){
                 <p className="font-bold">{theirProfile?.user?.bio}</p>
             </div>
         </div>
-        <div className="flex flex-wrap mt-5">
+        <div className="flex flex-wrap mt-5 justify-center gap-4">
             {theirProfile?.user?.posts.length>0?theirProfile?.user?.posts.map((post,index) => 
             <Link key={index} href={`/profile/${username}/${post.id}`}>
                 <img className="object-cover object-top w-[300px] h-[300px]" key={index} src={post.image}/>

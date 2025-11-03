@@ -7,7 +7,9 @@
 .dark{
   color-scheme: dark;
 }
-.container{
+.container-2{
   @apply max-w-[1200px] mx-auto;
 }
- 
+li{
+  margin: 0 !important;
+} 
