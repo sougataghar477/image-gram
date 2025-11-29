@@ -63,7 +63,7 @@ useEffect(() => {
           
 
         }}  key={index}>
-            <Link href={'/profile/'+notification.notifier}><b>{notification.notifier}</b></Link> liked your <Link href={'http://localhost:3000/profile/'+userContext?.state?.user?.username+'/'+notification.postId}>post</Link>
+            <Link href={'/profile/'+notification.notifier}><b>{notification.notifier}</b></Link> liked your <Link href={'https://image-gram-neon.vercel.app/profile/'+userContext?.state?.user?.username+'/'+notification.postId}>post</Link>
 {dayjs(notification?.createdAt).fromNow()}
         </p>
     }
@@ -77,7 +77,7 @@ useEffect(() => {
                 });
               }, 4000);
         }}  key={index}>
-            <Link href={'/profile/'+notification.notifier}><b>{notification.notifier}</b></Link> commented on your <Link className="underline" href={'http://localhost:3000/profile/'+userContext?.state?.user?.username+'/'+notification.postId}>post</Link>
+            <Link href={'/profile/'+notification.notifier}><b>{notification.notifier}</b></Link> commented on your <Link className="underline" href={'https://image-gram-neon.vercel.app/profile/'+userContext?.state?.user?.username+'/'+notification.postId}>post</Link>
            {' '} {notification.comment}{' '}{ dayjs(notification?.createdAt).fromNow()}
             </p>
     }
@@ -90,7 +90,7 @@ useEffect(() => {
                 });
               }, 4000);}}  key={index}>
                 
-        <Link href={'/profile/'+notification?.notifier}><b>{notification?.notifier}</b></Link> replied to your comment {notification.reply} on your <Link href={'http://localhost:3000/profile/'+userContext?.state?.user?.username+'/'+notification.postId}>post</Link>{''} {dayjs(notification.createdAt).fromNow()}
+        <Link href={'/profile/'+notification?.notifier}><b>{notification?.notifier}</b></Link> replied to your comment {notification.reply} on your <Link href={'https://image-gram-neon.vercel.app/profile/'+userContext?.state?.user?.username+'/'+notification.postId}>post</Link>{''} {dayjs(notification.createdAt).fromNow()}
     </p>
     }
     if(notification.notificationType==='liked comment' && userContext.state.user.username !== notification.notifier){
@@ -103,7 +103,7 @@ useEffect(() => {
                 });
               }, 4000);
         }}  key={index}>
-            <Link href={'/profile/'+notification?.notifier}><b>{notification?.notifier}</b></Link> liked your comment `{notification.comment}` on your <Link href={'http://localhost:3000/profile/'+notification.postAuthor+'/'+notification.postId}>post</Link>
+            <Link href={'/profile/'+notification?.notifier}><b>{notification?.notifier}</b></Link> liked your comment `{notification.comment}` on your <Link href={'https://image-gram-neon.vercel.app/profile/'+notification.postAuthor+'/'+notification.postId}>post</Link>
             {' '} {dayjs(notification?.createdAt).fromNow()}
         </p>
         }
